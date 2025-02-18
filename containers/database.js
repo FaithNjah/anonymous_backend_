@@ -1,6 +1,6 @@
 
 const mongoose = require('mongoose');
-const url = "mongodb://localhost:27017/anonymous_app";
+const url = process.env.DATABASE_URL;
 
 const connectToDatabase = async () => {
     try {

@@ -4,25 +4,22 @@ const jwt = require('jsonwebtoken');
 const userDataSchema = new mongoose.Schema({
 
 
-    firstname:{
-        type: String,
-        required :true
-    },
-
-    lastname: {
+    username: {
         type: String,
         required: true
     },
+    dateAdded:{
+        type: Date,
+        required :true,
+        default: new Date().toISOString()
+    },
 
-    username: {
+    password: {
         type: String,
         required: true
     }
 
-    // password: {
-    //     type: String,
-    //     required: true
-    // }
+
 
 });
 
@@ -32,7 +29,15 @@ const userMessageSchema = new mongoose.Schema({
         type: String,
         required :true
     },
-
+    dateSent:{
+        type: Date,
+        required :true,
+        default: new Date().toISOString()
+    },
+    ipAddress:{
+        type: String,
+        required :true
+    }
 
 });
 

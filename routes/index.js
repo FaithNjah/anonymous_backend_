@@ -9,21 +9,6 @@ router.get('/', (req, res) => {
     res.send('working fine');
 });
 
-router.get('/getmessage/:id', async (req, res) => {
-    const { id } = req.params;
-
-    try {
-        const message = await messageData.findById(id);
-
-        if (!message) {
-            return res.status(404).json({ message: 'Message not found' });
-        }
-
-        res.status(200).json(message);
-    } catch (error) {
-        res.status(500).json({ message: 'Error fetching message', error: error.message });
-    }
-});
 
 
 router.post('/message', async(req, res) => {
@@ -56,9 +41,10 @@ router.post('/signup', async (req, res) => {
 
     try{
         const usersdata = new userData({
-            firstname: req.body.firstname,
-            lastname: req.body.lastname,
             username: req.body.username,
+            dateAdded: req.body.dateAdded,
+            password: req.body.password
+           
         })
 
         await usersdata.save();
